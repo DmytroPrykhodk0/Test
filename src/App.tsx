@@ -15,36 +15,33 @@ export default function App() {
     {
             switch (value) {
                 case "fromCheap":
-                  setData(data.toSorted((a,b) => a.price - b.price))
+                  setData([...data].sort((a,b) => a.price - b.price))
               break;
                  case "fromExpensive":
-                  setData(data.toSorted((a,b) => b.price - a.price))
+                  setData([...data].sort((a,b) => b.price - a.price))
               break;
                case "departureTime":
-                      setData(data.toSorted((a, b) => new Date(a.departure).getTime() - new Date(b.departure).getTime()))
+                      setData([...data].sort((a, b) => new Date(a.arrivalTime).getTime() - new Date(b.arrivalTime).getTime()))
                   break;
                    case "arrivalTime":
-                      setData(data.toSorted((a, b) => new Date(a.arrival).getTime() - new Date(b.arrival).getTime()))
+                      setData([...data].sort((a, b) => new Date(a.departureTime).getTime() - new Date(b.departureTime).getTime()))
                   break;
                 case "airline":
-                      setData(data.toSorted((a, b) => a.airline.localeCompare(b.airline)))
+                      setData([...data].sort((a, b) => a.airline.localeCompare(b.airline)))
                   break;
             default:
-                return assertNever(value)
+                throw new Error(`Unexpected value: ${value}`)
             }
     }
 
-    function assertNever(value: never): never {
-      throw new Error(`Unexpected value: ${value}`)
-    }
-
+   
   return (
     <> 
     <CssBaseline />
     <GlobalStyles styles={{body: {backgroundColor: "#f9fafe"}}}/>
     <Routes>
       <Route path='/' element={<FlightsPage setData={setData} data={data} sortFlights={sortFlights}/>}/>
-      <Route path="/flights/:id" element={<FlightDetailsPage data={data}/>} />
+      <Route path="/flights/:id" element={<FlightDetailsPage/>} />
       <Route path='/cart' element={<></>}/>
     </Routes>
     </>

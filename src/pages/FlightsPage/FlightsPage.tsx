@@ -5,11 +5,11 @@ import {Typography,Button, Container,AppBar,Box,Stack} from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {Link} from 'react-router';
 import FlightsPageStyles from './flightPageStyles';
-import type {propsFlights} from '../../types'
+import type {propsFlightsPage} from '../../types'
 import { useState } from 'react';
 
 
-export default function FlightsPage(props:propsFlights)
+export default function FlightsPage(props:propsFlightsPage)
 {
   const [favorites, setFavorites] = useState<string[]>([]);
 
@@ -19,7 +19,7 @@ export default function FlightsPage(props:propsFlights)
            <Typography variant="h4" component="h1" sx={FlightsPageStyles.AppBarH1}>Список польотів</Typography>
           <Box sx={FlightsPageStyles.AppBarWrapper}>
             <MainSelect sortFlights={props.sortFlights}/>
-            <Filter setData={props.setData} data={props.data} favorites={favorites}/>
+            <Filter setData={props.setData} data={props.data} favorites={favorites} />
             <Button component={Link} to="/cart" variant="contained" startIcon={<ShoppingCartIcon />} sx={FlightsPageStyles.AppBarButton}> Корзина</Button>
           </Box>       
       </AppBar>

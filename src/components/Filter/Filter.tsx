@@ -2,10 +2,10 @@ import { Button,IconButton,Checkbox,FormControlLabel,Box,Drawer,List } from "@mu
 import FilterListAltIcon from '@mui/icons-material/FilterListAlt';
 import { useEffect,useState } from "react";
 import axios from "axios";
+import type { propsFilter } from "../../types";
 
 
-
-  export default function Filter(props)
+  export default function Filter(props:propsFilter)
   {
 
      const [open, setOpen] = useState(false);

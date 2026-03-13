@@ -75,7 +75,6 @@ if (!data) {
       },
         }}
       >
-        {index + 1}
       </Checkbox>
     ))}
   </Box>
@@ -110,7 +109,6 @@ if (!data) {
       },
         }}
       >
-        {index + half + 1}
       </Checkbox>
     ))}
   </Box>

@@ -18,9 +18,23 @@ export interface Flight {
 
 export interface propsFlights
 {
+  favorites: string[]
+  data:Flight[]
+  setData: Dispatch<SetStateAction<Flight[]>>;
+  setFavorites: Dispatch<SetStateAction<string[]>>;
+}
+
+export interface propsFlightsPage
+{
   data:Flight[]
   setData: Dispatch<SetStateAction<Flight[]>>;
   sortFlights:(value:string) => void
 }
 
+export interface propsFilter
+{
+  favorites:string[]
+  data:Flight[]
+  setData: Dispatch<SetStateAction<Flight[]>>;
+}
 export type SortingProps = {sortFlights: (value: string) => void;}
