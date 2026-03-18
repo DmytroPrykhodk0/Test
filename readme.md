@@ -1,7 +1,7 @@
 # Flight App Test
 
 ## Demo
-https://test-v1-psi.vercel.app/
+https://test-v2-eight.vercel.app/
 
 ## Repository 
 https://github.com/DmytroPrykhodk0/Test/
