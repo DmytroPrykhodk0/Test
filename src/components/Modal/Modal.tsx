@@ -12,7 +12,7 @@ export default function ModalCart() {
   const navigate = useNavigate();
   const item:cartItem[] = useSelector((state: RootState) => state.cart.items)
   const dispatch = useDispatch();
-
+  console.log(item)
   const handleClick = (id:string,seat:number) => {
         dispatch(
           removeCartItem({id:id,seat:seat})
@@ -27,7 +27,7 @@ export default function ModalCart() {
           {item.map((item,index) => 
           <Box key={index} sx={{borderRadius: 1, border:'solid 1px', gap:2, p:3,display:"grid",gridTemplateColumns:'1fr 1fr', gridTemplateRows:'auto auto'}}>      
               <Box sx={{gridColumn: "1 / 3",}}>
-                  <Button type="button" sx={{display:'flex', justifyContent:'flex-start',p:0}} onClick={() => handleClick(item.id, item.seat[0])}><ClearIcon sx={{color:'black'}}/></Button>
+                  <Button type="button" sx={{display:'flex', justifyContent:'flex-start',p:0}} onClick={() => handleClick(item.id, item.seat)}><ClearIcon sx={{color:'black'}}/></Button>
               </Box>
               <Box>
               <Typography>Авіалінії: {item.airline}</Typography>

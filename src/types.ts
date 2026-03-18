@@ -17,7 +17,7 @@ export interface Flight {
 }
 
 export interface cartItem extends Flight {
-  seat:number[] 
+  seat:number
 }
 
 export interface propsFlights
