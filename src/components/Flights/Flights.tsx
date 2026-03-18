@@ -19,7 +19,7 @@ import styles from "./FlightsStyles";
 
 export default function Flights(props: propsFlights ) {
   const toggleFavorite = (id: string) => {
-    props.setFavorites((prev) =>prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id],
+    props.setFavorites(prev => prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id],
     );
   };
   useEffect(() => {

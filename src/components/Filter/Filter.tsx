@@ -35,7 +35,7 @@ import type { propsFilter } from "../../types";
       
 
       function filterFavorites(){
-        if(filterFavorite)
+        if(filterFavorite && props.favorites.length > 0)
         {
           props.setData(props.data.filter(item => props.favorites.includes(item.id)))
         }else{

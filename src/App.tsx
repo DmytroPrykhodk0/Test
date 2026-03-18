@@ -1,15 +1,19 @@
 import { useState } from 'react';
-import {Routes, Route} from 'react-router';
+import {Routes, Route, useLocation} from 'react-router';
 import FlightDetailsPage from './pages/FlightDetailsPage/FlightDetailsPage'
 import FlightsPage from './pages/FlightsPage/FlightsPage'
-import {CssBaseline,GlobalStyles } from "@mui/material";
+import ModalCart from './components/Modal/Modal'
+import {CssBaseline,GlobalStyles} from "@mui/material";
 import type { Flight } from './types';
+
 
 
 
 export default function App() {
   
   const [data, setData] = useState<Flight[]>([]);
+const location = useLocation();
+  const state = location.state as { backgroundLocation?: Location };
 
     function sortFlights(value:string):void
     {
@@ -39,11 +43,19 @@ export default function App() {
     <> 
     <CssBaseline />
     <GlobalStyles styles={{body: {backgroundColor: "#f9fafe"}}}/>
-    <Routes>
+
+    <Routes location={state?.backgroundLocation || location}>
       <Route path='/' element={<FlightsPage setData={setData} data={data} sortFlights={sortFlights}/>}/>
       <Route path="/flights/:id" element={<FlightDetailsPage/>} />
-      <Route path='/cart' element={<></>}/>
+       <Route path="/cart" element={<ModalCart />} />
     </Routes>
+
+     {state?.backgroundLocation && (
+        <Routes>
+          <Route path="/cart" element={<ModalCart />} />
+        </Routes>
+      )}
+      
     </>
   )
 }
